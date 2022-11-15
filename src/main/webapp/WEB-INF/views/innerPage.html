@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div th:object="${house}">
+    <img th:src="${house.getImage()}" alt="image">
+    <p th:text="${house.name}"></p>
+    <p th:text="${house.description}"></p>
+    <p th:text="${house.price}"></p>
+    <p th:text="${house.person}"></p>
+    <div th:each="comment:${comments}">
+        <p th:text="${comment.getText()}"></p>
+    </div>
+    <div>
+        <a type="button" class="btn btn-success" th:href="@{/{id}/newComment(id=${house.getId()})}">+add comment</a>
+    </div>
+</div>
+</body>
+</html>
